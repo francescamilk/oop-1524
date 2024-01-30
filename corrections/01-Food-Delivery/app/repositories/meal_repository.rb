@@ -19,6 +19,14 @@ class MealRepository < BaseRepository
             # { id:"4" name:"Funghi" price:"12" }
             row[:id]    = row[:id].to_i
             row[:price] = row[:price].to_i
+
+            # When you have to connect to an external Object
+
+            # 1. convert the external_id to integer
+            # 2. use the id to call the find method in the right repository
+            # 3. assign the retrieved Object 
+
+            ## External Objects should be of their respective Class
             
             @elements << Meal.new(row)
         end

@@ -1,15 +1,23 @@
 class Router
-    def initialize(meals_controller, customers_controller)
+    def initialize(meals_controller, customers_controller, sessions_controller)
         @meals_controller     = meals_controller
         @customers_controller = customers_controller
+        @sessions_controller  = sessions_controller
+        @current_user         = nil
         @running              = true
     end
 
     def run
         while @running
-            display_actions()
-            action = gets.chomp.to_i
-            route_action(action)
+            @current_user = @sessions_controller.login
+            if @current_user.rider? 
+                puts "TODO: refactor into rider menu"
+            else
+                puts "TODO: refactor into manager menu"
+            end
+            # display_actions()
+            # action = gets.chomp.to_i
+            # route_action(action)
         end
     end
 
